@@ -1,0 +1,149 @@
+ 
+    :root{
+      --bg:#0b0f14;            /* page background */
+      --card:#121824;          /* card background */
+      --muted:#9fb0c3;         /* secondary text */
+      --text:#e7eef8;          /* primary text */
+      --brand:#61dbfb;         /* accent */
+      --brand-2:#7c5cff;       /* accent 2 */
+      --line:#1b2636;          /* borders */
+      --chip:#101826;          /* skill chip bg */
+      --glow: 0 0 0 transparent;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,.12), transparent 60%), radial-gradient(1000px 500px at 10% 10%, rgba(97,219,251,.10), transparent 60%), var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout */
+    .container{width:min(1100px, 92vw);margin-inline:auto}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(11,15,20,.9), rgba(11,15,20,.65) 60%, rgba(11,15,20,0));backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .logo-badge{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg, var(--brand), var(--brand-2));display:grid;place-items:center;color:#091017;font-weight:900}
+    nav ul{display:flex;gap:22px;list-style:none;padding:0;margin:0}
+    nav a{opacity:.9}
+    nav a:hover{opacity:1}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg, var(--brand), var(--brand-2));color:#0b0f14;padding:10px 16px;border-radius:12px;font-weight:700;border:none}
+
+    /* Hero */
+    .hero{padding:80px 0 50px;}
+    .hero-grid{display:grid;grid-template-columns: 1.3fr .7fr;gap:28px;align-items:center}
+    .tag{display:inline-flex;align-items:center;gap:8px;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.25);color:#cfd7ff;padding:8px 12px;border-radius:999px;font-size:13px}
+    h1{font-size:clamp(32px, 4.5vw, 54px);line-height:1.05;margin:14px 0 8px}
+    .lead{font-size:clamp(15px, 1.5vw, 18px);color:var(--muted);max-width:70ch}
+    .hero-card{background:linear-gradient(180deg, rgba(16,24,38,.7), rgba(16,24,38,.35));border:1px solid var(--line);border-radius:18px;padding:18px}
+
+    /* Section */
+    section{padding:60px 0;border-top:1px dashed var(--line)}
+    .section-title{font-size:22px;margin:0 0 18px;display:flex;align-items:center;gap:10px}
+    .section-title .dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
+    .grid{display:grid;gap:18px}
+
+    /* About */
+    .about{grid-template-columns: 1fr 1fr}
+    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .kpi .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+    .subtle{color:var(--muted)}
+
+    /* Skills */
+    .skill-chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{background:var(--chip);border:1px solid var(--line);padding:10px 12px;border-radius:12px;font-weight:600}
+
+    /* Work */
+    .work-grid{grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))}
+    .work-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    .work-card .thumb{aspect-ratio:16/10;background:linear-gradient(135deg, rgba(97,219,251,.18), rgba(124,92,255,.18));display:grid;place-items:center;font-weight:800;letter-spacing:.8px}
+    .work-card .content{padding:14px}
+
+    /* Internship */
+    .timeline{display:grid;gap:14px}
+    .t-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .t-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .contact .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+    .contact a{word-break:break-word}
+
+    footer{padding:50px 0;color:var(--muted);text-align:center;border-top:1px dashed var(--line)}
+
+    /* Responsive */
+    @media (max-width: 880px){
+      .hero-grid{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+    }
+
+
+.work-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.work-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Thumbnail wrapper */
+.thumb {
+  width: 100%;
+  height: 100%;   /* FIXED height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0e1420; /* fallback background */
+}
+
+/* Make images fit properly */
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* fills area without distortion */
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Carousel special */
+
+.carousel img {
+      width: 100%;
+  height: 100%;
+  object-fit: cover;  /* fills area without distortion */
+  flex-shrink: 0;
+  display: block;
+
+}
+
+/* Hero Image Hover Effect */
+.hero-card img {
+  border-radius: 18px;          /* smooth corners */
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+.hero-card img:hover {
+  transform: scale(1.08);       /* zoom-in effect */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); /* shadow glow */
+}
+
+.work-card .btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #0b0f14;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
